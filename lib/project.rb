@@ -10,14 +10,11 @@ class Project
     end
     
     def backers
-        temp = ProjectBacker.all
         ans = []
-        x = 0
-        temp.length.times do
-            if temp[x].project == self
-                ans.push(temp[x].backer)
+        ProjectBacker.all.select do |proj|
+            if proj.project == self
+                ans.push(proj.backer)
             end
-            x += 1
         end
         return ans
     end
